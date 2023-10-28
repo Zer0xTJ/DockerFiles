@@ -1,0 +1,11 @@
+# when start the image , run this command:
+# docker exec -it mongodb mongo
+# mongosh
+# rs.initiate({_id: 'rs0', members: [{_id: 0, host: 'localhost:27017'}]})
+
+FROM mongo:latest
+
+RUN mongod &
+
+
+CMD ["mongod", "--bind_ip_all", "--replSet", "rs0"]
